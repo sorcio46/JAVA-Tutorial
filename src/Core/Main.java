@@ -10,11 +10,15 @@ public class Main {
 		//DemoIF d = new DemoIF();
 		//DemoWHILE d = new DemoWHILE();
 		//DemoFOR d = new DemoFOR();
-		DemoDOWHILE d = new DemoDOWHILE();
+		//DemoDOWHILE d = new DemoDOWHILE();
+		DemoPRIME d = new DemoPRIME();
 		Scanner in = new Scanner(System.in);
 		int z=in.nextInt();
 		in.close();
-		d.run(z);
+		if(d.isPrime(z))
+			System.out.println("E' primo");
+		else
+			System.out.println("Non e' primo");
 	}
 
 }
