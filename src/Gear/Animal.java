@@ -7,13 +7,13 @@ public class Animal {
 	private int health;
 	private Position position;
 	public int stamina;
-	public boolean rest;
+	//public boolean rest;
 	
 	public Animal(Position p){
 		this.health=100;
 		this.stamina=100;
 		this.position=p;
-		this.rest=false;
+		//this.rest=false;
 	}
 	
 	public Position getPosition() {
@@ -24,7 +24,6 @@ public class Animal {
 		this.position=p;
 	}
 	
-	
 	public int getHealth() {
 		return this.health;
 	}
@@ -33,6 +32,7 @@ public class Animal {
 		return this.stamina;
 	}
 	
+	/*
 	public boolean getRest() {
 		return this.rest;
 	}
@@ -40,6 +40,14 @@ public class Animal {
 	public void setRest(boolean a) {
 		this.rest=a;
 	}
+	
+	public void rest() {
+		if(this.stamina==100)
+			this.rest=false;
+		else 
+			this.stamina=this.stamina+25;
+	}
+	*/
 	
 	public void move(String d) {
 		if (this.stamina!=0) {
