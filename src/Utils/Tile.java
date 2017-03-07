@@ -6,8 +6,13 @@ public class Tile {
 	private Animal host;
 	private Animal guest;
 	
-	Tile(Animal a){
-		this.host=a;
+	public Tile(Animal h) {
+		this.host=h;
+	}
+	
+	public Tile() {
+		this.host=null;
+		this.guest=null;
 	}
 	
 	public Animal getHost() {
@@ -36,5 +41,21 @@ public class Tile {
 		if(this.guest!=null)
 			return true;
 		return false;
+	}
+	
+	public String toString() {
+		String des;
+		des="Tile";
+		if(this.host!=null)
+			des=des+" con";
+		else
+			des=des+" senza";
+		des=des+" Host e";
+		if(this.guest!=null)
+			des=des+" con";
+		else
+			des=des+" senza";
+		des=des+" Guest";
+		return des;
 	}
 }

@@ -9,7 +9,7 @@ public class Animal {
 	public int stamina;
 	public boolean rest;
 	
-	Animal(Position p){
+	public Animal(Position p){
 		this.health=100;
 		this.stamina=100;
 		this.position=p;
@@ -61,7 +61,14 @@ public class Animal {
 				this.position.setY(this.position.getY()-1);
 				this.position.setX(this.position.getX()-1);
 			}
+			//todo
 		}
-			
+		
+	}
+	
+	public String toString() {
+		String des;
+		des="Animale in posizione "+this.position.getX()+" "+this.position.getY()+" ";
+		return des;
 	}
 }
