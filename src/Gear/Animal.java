@@ -6,10 +6,14 @@ public class Animal {
 	
 	private int health;
 	private Position position;
+	public int stamina;
+	public boolean rest;
 	
 	Animal(Position p){
 		this.health=100;
+		this.stamina=100;
 		this.position=p;
+		this.rest=false;
 	}
 	
 	public Position getPosition() {
@@ -20,7 +24,44 @@ public class Animal {
 		this.position=p;
 	}
 	
+	
 	public int getHealth() {
 		return this.health;
+	}
+	
+	public int getStamina() {
+		return this.stamina;
+	}
+	
+	public boolean getRest() {
+		return this.rest;
+	}
+	
+	public void setRest(boolean a) {
+		this.rest=a;
+	}
+	
+	public void move(String d) {
+		if (this.stamina!=0) {
+			if (d.equals("N"))
+				this.position.setY(this.position.getY()+1);
+			if (d=="NE") {
+				this.position.setY(this.position.getY()+1);
+				this.position.setX(this.position.getX()+1);
+			}
+			if (d=="E")
+				this.position.setX(this.position.getX()+1);
+			if (d=="SE") {
+				this.position.setY(this.position.getY()-1);
+				this.position.setX(this.position.getX()+1);
+			}
+			if (d=="S")
+				this.position.setY(this.position.getY()-1);
+			if (d=="SW") {
+				this.position.setY(this.position.getY()-1);
+				this.position.setX(this.position.getX()-1);
+			}
+		}
+			
 	}
 }
