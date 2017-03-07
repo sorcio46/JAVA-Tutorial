@@ -2,7 +2,8 @@ package Test;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-import Core.DemoPRIME;
+
+import Demo.DemoPRIME;
 
 public class BaseTest {
 

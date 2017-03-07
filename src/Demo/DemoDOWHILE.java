@@ -1,4 +1,4 @@
-package Core;
+package Demo;
 
 public class DemoDOWHILE {
 	public void run(int n) {

@@ -1,4 +1,4 @@
-package Core;
+package Demo;
 
 public class DemoPRIME {
 	public boolean isPrime(int n) {
