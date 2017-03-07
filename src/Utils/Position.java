@@ -24,4 +24,9 @@ public class Position {
 	public void setY(int a) {
 		this.y=a;
 	}
+	
+	public String toString() {
+		String des=this.x+" orizzontale "+this.y+" verticale";
+		return des;
+	}
 }

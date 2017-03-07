@@ -10,6 +10,7 @@ public class Main {
 		Savana Khaelia = new Savana(5,5);
 		System.out.println(Khaelia.toString());
 		
+		
 	}
 
 }

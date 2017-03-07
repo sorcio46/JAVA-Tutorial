@@ -6,27 +6,42 @@ import Utils.Tile;
 
 public class Savana {
 	private Tile matrix[][];
+	private int xi;
+	private int yi;
+	private int Entities=0;
+	private Animal[] animals;
 	
 	public Savana(int x, int y) {
+		this.xi=x;
+		this.yi=y;
 		matrix= new Tile[x][y];
-		int i,j;
-		Position p = new Position(0,0);
+		int i,j,c=0;
 		for(i=0;i<x;i++) {
 			for(j=0;j<y;j++) {
 				Random rand = new Random();
 				int  n = rand.nextInt(2);
 				if(n==1) {
-					p.setX(j);
-					p.setY(i);
+					Position p = new Position(j,i);
 					Animal a = new Animal(p);
 					//i - per le righe e j per le colonne
 					Tile t = new Tile(a);
+					this.Entities++;
 					this.matrix[i][j]=t;
 				}
 				else {
 					Tile t = new Tile();
 					this.matrix[i][j]=t;
 				}
+			}
+		}
+		this.animals=new Animal[this.Entities];
+		for(i=0;i<x;i++) {
+			for(j=0;j<y;j++) {
+				if(this.matrix[i][j].hasHost()==true) {
+					Animal a=this.matrix[i][j].getHost();
+					this.animals[c]=a;
+					c++;
+				}	
 			}
 		}
 		System.out.println("Building complete! \n");
@@ -36,19 +51,37 @@ public class Savana {
 		return this.matrix[x][y];
 	}
 	
+	public int getEntities() {
+		return this.Entities;
+	}
+	
+	public int getXi() {
+		return this.xi;
+	}
+	
+	public int getYi() {
+		return this.yi;
+	}
+	
+	public Animal[] getAnimals() {
+		return this.animals;
+	}
+	
 	public String toString() {
 		String des="Mappa di gioco \n";
 		int i, j;
-		int rows = matrix.length;
-		int cols = matrix[0].length;
-		for(i=0;i<rows;i++) {
+		for(i=0;i<xi;i++) {
 			des=des.concat("Riga "+i+" - ");
-			for(j=0;j<cols;j++) {
+			for(j=0;j<yi;j++) {
 				if (this.matrix[i][j].hasHost()==true)
 					des=des.concat("Pos: "+j+","+i+"An! \t");
 				des=des.concat("Pos: "+i+","+j+"\t");
 			}
 			des=des.concat("\n");
+		}
+		des=des.concat("\n Elenco degli animali \n");
+		for(i=0;i<this.Entities;i++) {
+			des=des.concat("Animale in posizione "+this.animals[i].getPosition().toString()+"\n");
 		}
 		return des;
 	}
