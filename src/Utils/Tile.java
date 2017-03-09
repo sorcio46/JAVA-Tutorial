@@ -6,7 +6,7 @@ public class Tile {
 	private Animal host;
 	private Animal guest;
 	private Position pos;
-	private boolean lb = false;
+	private boolean rb = false;
 	private boolean db = false;
 	
 	public Tile(Animal h, Position p) {
@@ -40,8 +40,8 @@ public class Tile {
 		this.guest=a;
 	}
 	
-	public void setLb(Boolean b) {
-		this.lb=b;
+	public void setRb(Boolean b) {
+		this.rb=b;
 	}
 	
 	public void setDb(Boolean b) {
@@ -79,6 +79,10 @@ public class Tile {
 		else
 			des=des+" senza";
 		des=des+" Guest";
+		if(this.rb==true)
+			des=des+" bordo destro";
+		if(this.db==true)
+			des=des+" bordo sottostante";
 		return des;
 	}
 }

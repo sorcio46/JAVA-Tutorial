@@ -34,6 +34,16 @@ public class Savana {
 				}
 			}
 		}
+		//Building borders
+		j=y-1;
+		for(i=0;i<x;i++) {
+			this.matrix[i][j].setRb(true);
+		}
+		i=x-1;
+		for(j=0;j<y;j++) {
+			this.matrix[i][j].setDb(true);
+		}
+		//Organizing entities
 		this.animals=new Animal[this.Entities];
 		for(i=0;i<x;i++) {
 			for(j=0;j<y;j++) {
