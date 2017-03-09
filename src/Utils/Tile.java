@@ -5,12 +5,17 @@ import Gear.Animal;
 public class Tile {
 	private Animal host;
 	private Animal guest;
+	private Position pos;
+	private boolean lb = false;
+	private boolean db = false;
 	
-	public Tile(Animal h) {
+	public Tile(Animal h, Position p) {
 		this.host=h;
+		this.pos=p;
 	}
 	
-	public Tile() {
+	public Tile(Position p) {
+		this.pos=p;
 		this.host=null;
 		this.guest=null;
 	}
@@ -23,12 +28,24 @@ public class Tile {
 		return this.guest;
 	}
 	
+	public Position getPosition() {
+		return this.pos;
+	}
+	
 	public void setHost(Animal a) {
 		this.host=a;
 	}
 	
 	public void setGuest(Animal a) {
 		this.guest=a;
+	}
+	
+	public void setLb(Boolean b) {
+		this.lb=b;
+	}
+	
+	public void setDb(Boolean b) {
+		this.db=b;
 	}
 	
 	public boolean hasHost() {
@@ -43,9 +60,15 @@ public class Tile {
 		return false;
 	}
 	
+	public int[] getAllowedDirections() {
+		int[] directions = new int[9];
+		//todo
+		return directions;
+	}
+	
 	public String toString() {
 		String des;
-		des="Tile";
+		des="Tile in posizione "+this.pos.toString();
 		if(this.host!=null)
 			des=des+" con";
 		else

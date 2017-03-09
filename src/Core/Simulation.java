@@ -2,6 +2,7 @@ package Core;
 
 import Gear.Animal;
 import Gear.Savana;
+import Utils.Tile;
 
 public class Simulation {
 	private Savana savana;
@@ -20,8 +21,9 @@ public class Simulation {
 		for(i=0;i<iterations;i++) {
 			System.out.println("Esecuzione Iterazione numero "+i);
 			for(j=0;j<animals.length;j++) {
-				Action ac = new Action(animals[j]);
-				ac.run();
+				Tile t=this.savana.getTile(animals[j]);
+				Action a = new Action(t);
+				//todo
 			}
 		}
 		return true;

@@ -49,31 +49,6 @@ public class Animal {
 	}
 	*/
 	
-	public void move(String d) {
-		if (this.stamina!=0) {
-			if (d.equals("N"))
-				this.position.setY(this.position.getY()+1);
-			if (d=="NE") {
-				this.position.setY(this.position.getY()+1);
-				this.position.setX(this.position.getX()+1);
-			}
-			if (d=="E")
-				this.position.setX(this.position.getX()+1);
-			if (d=="SE") {
-				this.position.setY(this.position.getY()-1);
-				this.position.setX(this.position.getX()+1);
-			}
-			if (d=="S")
-				this.position.setY(this.position.getY()-1);
-			if (d=="SW") {
-				this.position.setY(this.position.getY()-1);
-				this.position.setX(this.position.getX()-1);
-			}
-			//todo
-		}
-		
-	}
-	
 	public String toString() {
 		String des;
 		des="Animale in posizione "+this.position.getX()+" "+this.position.getY()+" ";
