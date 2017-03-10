@@ -25,6 +25,11 @@ public class Position {
 		this.y=a;
 	}
 	
+	public void sum(Position p) {
+		this.x=this.x+p.getX();
+		this.y=this.y+p.getY();
+	}
+	
 	public String toString() {
 		String des=this.x+" orizzontale "+this.y+" verticale";
 		return des;

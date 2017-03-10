@@ -10,8 +10,9 @@ public class Main {
 		Savana Khaelia = new Savana(4,4);
 		System.out.println(Khaelia.toString());
 		
-		//Simulation sim = new Simulation(Khaelia);
-		//sim.run(10);
+		Simulation sim = new Simulation(Khaelia);
+		sim.run(10);
+		
 	}
 
 }

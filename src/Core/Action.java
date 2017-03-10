@@ -1,16 +1,15 @@
 package Core;
 
-import java.util.ArrayList;
-import Utils.Tile;
+import java.util.Random;
+
 import Utils.Position;
+import Utils.Tile;
 
 public class Action {
 	private Tile zone;
-	private ArrayList dir;
 	
 	public Action(Tile a) {
 		this.zone=a;
-		allowedDirections();
 	}
 	
 	public Tile getZone() {
@@ -22,25 +21,79 @@ public class Action {
      * W   x  E
      * SW  S  SE
      * 
-     * 7   8   9
-     * 4   5   6
-     * 1   2   3
+     * 6   7   8
+     * 3   4   5
+     * 0   1   2
 	 */
 	
-	private void allowedDirections() {
-		/*Position p = this.zone.getPosition();
-		dir.add(5);
-		if(p.getY()!=0) {
-			dir.add(8);
-			if(p.getX()!=0)
-				dir.add(7);
-			if(p.getX<)
-		}*/
-	}
-	
-	public void move() {
-		int [] directions=this.zone.getAllowedDirections();
-		//todo
+	//this method needs to be fixed
+	public Position move() {
+		Position p;
+		int[] directions=this.zone.getAllowedDirections();
+		int i, c=0;
+		for(i=0;i<directions.length;i++) {
+			if(directions[i]==1)
+				c++;
+		}
+		int[] go=new int[c];
+		c=0;
+		for(i=0;i<directions.length;i++) {
+			if(directions[i]==1) {
+				go[c]=i;
+				c++;
+			}
+		}
+		
+		Random rand = new Random();
+		int  n = rand.nextInt(c);
+		
+		/*
+		 * NW  N  NE
+	     * W   x  E
+	     * SW  S  SE
+	     * 
+	     * 6   7   8
+	     * 3   4   5
+	     * 0   1   2
+	     * 
+	     * -1,-1  +0,-1  -1,+1
+	     * -1,+0  +x,+y  +1,+0
+	     * -1,+1  +0,+1  +1,+1	
+		 */
+		
+		switch(go[n]) {
+		case 0: p=new Position(-1,1);
+		break;
+			
+		case 1: p=new Position(0,1);
+		break;
+			
+		case 2: p=new Position(1,1);
+		break;
+			
+		case 3: p=new Position(-1,0);
+		break;
+		
+		case 4: p=new Position(0,0);
+		break;
+		
+		case 5: p=new Position(1,0);
+		break;
+		
+		case 6: p=new Position(-1,-1);
+		break;
+		
+		case 7: p=new Position(0,-1);
+		break;
+		
+		case 8: p=new Position(-1,1);
+		break;
+		
+		default: p=new Position(0,0);
+		break;
+		}
+			
+		return p;
 	}
 	
 }

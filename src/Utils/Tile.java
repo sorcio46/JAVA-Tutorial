@@ -60,9 +60,42 @@ public class Tile {
 		return false;
 	}
 	
+	/*
+	 * NW  N  NE
+     * W   x  E
+     * SW  S  SE
+     * 
+     * 6   7   8
+     * 3   4   5
+     * 0   1   2
+	 */
+	
 	public int[] getAllowedDirections() {
 		int[] directions = new int[9];
-		//todo
+		int i;
+		for(i=0;i<directions.length;i++) {
+			directions[i]=0;
+		}
+		directions[4]=1;
+		if(this.pos.getX()!=0) {
+			directions[3]=1;
+			if(this.pos.getY()!=0)
+				directions[6]=1;
+			if(this.db==false)
+				directions[0]=1;
+		}
+		if(this.pos.getY()!=0) {
+			directions[7]=1;
+			if(this.rb==false)
+				directions[8]=1;
+		}
+		if(this.rb==false) {
+			directions[5]=1;
+			if(this.db==false)
+				directions[2]=1;
+		}
+		if(this.db==false)
+			directions[1]=0;
 		return directions;
 	}
 	
