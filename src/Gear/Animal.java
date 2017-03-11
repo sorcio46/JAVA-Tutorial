@@ -30,6 +30,10 @@ public class Animal {
 		return this.health;
 	}
 	
+	public void setHealth(int n) {
+		this.health=n;
+	}
+	
 	public int getStamina() {
 		return this.stamina;
 	}

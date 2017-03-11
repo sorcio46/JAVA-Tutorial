@@ -26,12 +26,14 @@ public class Position {
 	}
 	
 	public void sum(Position p) {
-		this.x=this.x+p.getX();
-		this.y=this.y+p.getY();
+		int a = this.x+p.getX();
+		int b = this.y+p.getY();
+		this.x = a;
+		this.y = b;
 	}
 	
 	public String toString() {
-		String des=this.x+" orizzontale "+this.y+" verticale";
+		String des="riga "+this.x+" colonna "+this.y;
 		return des;
 	}
 }

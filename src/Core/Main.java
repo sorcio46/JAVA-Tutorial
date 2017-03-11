@@ -9,14 +9,17 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 
-		Savana Khaelia = new Savana(4,4);
+		Savana Khaelia = new Savana(3,3);
 		System.out.println(Khaelia.toString());
 		
 		Simulation sim = new Simulation(Khaelia);
 		sim.run(3);
 		
-		/*
-		Position p = new Position(0,0);
+		//test();
+	}
+	
+	public static void test() {
+		Position p = new Position(2,0);
 		Tile t = new Tile(p);
 		//t.setDb(true);
 		//t.setRb(true);
@@ -35,7 +38,6 @@ public class Main {
 		System.out.println("\n"+p.toString());
 		t.getPosition().sum(p);
 		System.out.println("\n"+t.toString());
-		*/
 	}
 
 }

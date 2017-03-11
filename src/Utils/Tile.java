@@ -41,17 +41,17 @@ public class Tile {
 			this.directions[i]=0;
 		}
 		this.directions[4]=1; //No Movement
-		if(this.pos.getX()!=0) { //Not in the first column
-			this.directions[3]=1; //West
+		if(this.pos.getX()!=0) { //Not in the first row
+			this.directions[7]=1; //North
 			if(this.pos.getY()!=0)
 				this.directions[6]=1; //North-West
+			if(this.rb==false)
+				this.directions[8]=1; //Northe-East
+		}
+		if(this.pos.getY()!=0) { //Not in the first column
+			this.directions[3]=1; //West
 			if(this.db==false)
 				this.directions[0]=1; //South-West
-		}
-		if(this.pos.getY()!=0) { //Not in the first row
-			this.directions[7]=1; //North
-			if(this.rb==false)
-				this.directions[8]=1; //North-East
 		}
 		if(this.rb==false) { //Not on the right border
 			this.directions[5]=1; //East

@@ -14,13 +14,13 @@ public class Savana {
 	public Savana(int x, int y) {
 		this.xi=x;
 		this.yi=y;
-		matrix= new Tile[x][y];
+		matrix= new Tile[y][x];
 		int i,j,c=0;
-		for(i=0;i<x;i++) {
-			for(j=0;j<y;j++) {
+		for(i=0;i<y;i++) {
+			for(j=0;j<x;j++) {
 				Random rand = new Random();
 				int  n = rand.nextInt(2);
-				Position p = new Position(j,i);
+				Position p = new Position(i,j);
 				if(n==1) {
 					Animal a = new Animal(p, this.Entities);
 					//i - per le righe e j per le colonne
@@ -45,8 +45,8 @@ public class Savana {
 		}
 		//Organizing entities
 		this.animals=new Animal[this.Entities];
-		for(i=0;i<x;i++) {
-			for(j=0;j<y;j++) {
+		for(i=0;i<y;i++) {
+			for(j=0;j<x;j++) {
 				if(this.matrix[i][j].hasHost()==true) {
 					Animal a=this.matrix[i][j].getHost();
 					this.animals[c]=a;
@@ -78,22 +78,29 @@ public class Savana {
 	}
 	
 	public Tile getTile(Animal a) {
-		Position p = a.getPosition();
-		System.out.println(p.toString());
-		Tile t = this.matrix[p.getX()][p.getY()];
+		Tile t = null;
+		int i, j;
+		for(i=0;i<this.xi;i++) {
+			for(j=0;j<this.yi;j++) {
+					if(this.matrix[i][j].hasHost()){
+						if(this.matrix[i][j].getHost().getId()==a.getId())
+							t=this.matrix[i][j];
+				}
+			}
+		}
 		return t;
 	}
 	
 	public String toString() {
 		String des="Mappa di gioco \n";
 		int i, j;
-		for(i=0;i<xi;i++) {
+		for(i=0;i<yi;i++) {
 			des=des.concat("Riga "+i+" - ");
-			for(j=0;j<yi;j++) {
+			for(j=0;j<xi;j++) {
 				if (this.matrix[i][j].hasHost()==true)
-					des=des.concat("Pos: "+j+","+i+"An #"+this.matrix[i][j].getHost().getId()+"\t");
+					des=des.concat("Pos: "+i+","+j+"An #"+this.matrix[i][j].getHost().getId()+"\t");
 				else
-					des=des.concat("Pos: "+j+","+i+"\t");
+					des=des.concat("Pos: "+i+","+j+"\t");
 			}
 			des=des.concat("\n");
 		}
@@ -105,6 +112,22 @@ public class Savana {
 		for(i=0;i<xi;i++) {
 			for(j=0;j<yi;j++) {
 				des=des+matrix[i][j].toString()+"\n";
+			}
+			des=des.concat("\n");
+		}
+		return des;
+	}
+	
+	public String miniToString() {
+		String des=new String();
+		int i, j;
+		for(i=0;i<yi;i++) {
+			des=des.concat("Riga "+i+" - ");
+			for(j=0;j<xi;j++) {
+				if (this.matrix[i][j].hasHost()==true)
+					des=des.concat("Pos: "+i+","+j+"An #"+this.matrix[i][j].getHost().getId()+"\t");
+				else
+					des=des.concat("Pos: "+i+","+j+"\t");
 			}
 			des=des.concat("\n");
 		}
