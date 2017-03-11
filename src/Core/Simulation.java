@@ -16,20 +16,23 @@ public class Simulation {
 		return this.savana;
 	}
 	
+	//to do fix this
 	public boolean run(int iterations) {
 		Animal[] animals=this.savana.getAnimals();
 		int i, j;
 		for(i=0;i<iterations;i++) {
-			System.out.println("Esecuzione Iterazione numero "+i);
+			System.out.println("--- Esecuzione Iterazione numero "+i);
 			for(j=0;j<animals.length;j++) {
 				Tile t=this.savana.getTile(animals[j]);
+				Animal al=t.getHost();
 				Action a = new Action(t);
 				Position p=a.move();
+				System.out.println("\n"+t.toString());
 				if(p.getX()==0 & p.getY()==0)
 					System.out.println("\nL'animale non si è mosso");
 				else {
 					System.out.println("\nMovimento "+p.toString());
-					Animal al=t.getHost();
+					//null pointer exception, can't find animal
 					System.out.println("Posizione di partenza animale "+al.getPosition().toString());
 					al.getPosition().sum(p);
 					t.setHost(null);

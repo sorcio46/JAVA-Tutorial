@@ -22,7 +22,7 @@ public class Savana {
 				int  n = rand.nextInt(2);
 				Position p = new Position(j,i);
 				if(n==1) {
-					Animal a = new Animal(p);
+					Animal a = new Animal(p, this.Entities);
 					//i - per le righe e j per le colonne
 					Tile t = new Tile(a,p);
 					this.Entities++;
@@ -79,6 +79,7 @@ public class Savana {
 	
 	public Tile getTile(Animal a) {
 		Position p = a.getPosition();
+		System.out.println(p.toString());
 		Tile t = this.matrix[p.getX()][p.getY()];
 		return t;
 	}
@@ -90,14 +91,15 @@ public class Savana {
 			des=des.concat("Riga "+i+" - ");
 			for(j=0;j<yi;j++) {
 				if (this.matrix[i][j].hasHost()==true)
-					des=des.concat("Pos: "+j+","+i+"An! \t");
-				des=des.concat("Pos: "+j+","+i+"\t");
+					des=des.concat("Pos: "+j+","+i+"An #"+this.matrix[i][j].getHost().getId()+"\t");
+				else
+					des=des.concat("Pos: "+j+","+i+"\t");
 			}
 			des=des.concat("\n");
 		}
 		des=des.concat("\nElenco degli animali \n");
 		for(i=0;i<this.Entities;i++) {
-			des=des.concat("Animale in posizione "+this.animals[i].getPosition().toString()+"\n");
+			des=des.concat(this.animals[i].toString()+"\n");
 		}
 		des=des.concat("\nElenco dei Tiles \n");
 		for(i=0;i<xi;i++) {

@@ -26,7 +26,6 @@ public class Action {
      * 0   1   2
 	 */
 	
-	//this method needs to be fixed
 	public Position move() {
 		Position p;
 		int[] directions=this.zone.getAllowedDirections();
@@ -44,6 +43,11 @@ public class Action {
 			}
 		}
 		
+		//System.out.print("\n");
+		for(i=0;i<go.length;i++) {
+			//System.out.println(go[i]);
+		}
+		
 		Random rand = new Random();
 		int  n = rand.nextInt(c);
 		
@@ -56,7 +60,7 @@ public class Action {
 	     * 3   4   5
 	     * 0   1   2
 	     * 
-	     * -1,-1  +0,-1  -1,+1
+	     * -1,-1  +0,-1  +1,-1
 	     * -1,+0  +x,+y  +1,+0
 	     * -1,+1  +0,+1  +1,+1	
 		 */
@@ -86,7 +90,7 @@ public class Action {
 		case 7: p=new Position(0,-1);
 		break;
 		
-		case 8: p=new Position(-1,1);
+		case 8: p=new Position(1,-1);
 		break;
 		
 		default: p=new Position(0,0);

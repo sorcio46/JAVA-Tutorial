@@ -6,10 +6,12 @@ public class Animal {
 	
 	private int health;
 	private Position position;
-	public int stamina;
+	private int stamina;
+	private int id;
 	//public boolean rest;
 	
-	public Animal(Position p){
+	public Animal(Position p, int id){
+		this.id=id;
 		this.health=100;
 		this.stamina=100;
 		this.position=p;
@@ -32,6 +34,10 @@ public class Animal {
 		return this.stamina;
 	}
 	
+	public int getId() {
+		return this.id;
+	}
+	
 	/*
 	public boolean getRest() {
 		return this.rest;
@@ -51,7 +57,7 @@ public class Animal {
 	
 	public String toString() {
 		String des;
-		des="Animale in posizione "+this.position.getX()+" "+this.position.getY()+" ";
+		des="Animale con id "+this.id+" in posizione "+this.position.toString();
 		return des;
 	}
 }
